@@ -11,27 +11,20 @@ def getMenu():
     url = 'http://www.thecrimson.com/flyby/'
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read(), 'html.parser')
-    sidebar = soup.findAll("section", { "class" : "widget widget-primary" })[0]
-    print sidebar
-    # machine = washer_div.next_sibling
-    # if machinetype == 'washer':
-    #     while 'id' not in machine.attrs or machine['id'] != 'dryer':
-    #         machines.append({'lr': roomid,
-    #          'id': machine.a['id'],
-    #          'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-    #          'time': machine.a.p.text})
-    #         machine = machine.next_sibling
-    # else:
-    #     while machine and machine.name == 'li':
-    #         machines.append({'lr': roomid,
-    #          'id': machine.a['id'],
-    #          'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-    #          'time': machine.a.p.text})
-    #         machine = machine.next_sibling
-    # return machines
+    try:
+        sidebar = soup.findAll("section", { "class" : "widget widget-primary" })[0]
+        menu = sidebar.findAll("p")
+        body = ""
+        for i in menu:
+            body += i.text.encode('unicode-escape').replace(r'\xb0','')
+            body += "\n"
+    except Exception, e:
+        print str(e)
+        return "Could not find food data."
+    return body
 
 def makeSpecial():
-    s = "Current Food: \n"
+    s = "Current Menu: \n"
     return s
     
 ############################
