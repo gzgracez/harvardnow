@@ -1,7 +1,8 @@
-import run, LaundryScrape, shuttle
+# import run, shuttle
+from services import *
 
 f = open('output.txt', 'w')
-option = 4
+option = 5
 if (option == 1):
 
 	for room, roomid in LaundryScrape.rooms.iteritems():
@@ -30,3 +31,6 @@ elif (option == 3):
 elif (option == 4):
 	shuttle.arrivalsStopToString(shuttle.arrivalsAtStopID('4070614'))
 	shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId('4003894'))
+
+elif (option == 5):
+	food.getMenu()
