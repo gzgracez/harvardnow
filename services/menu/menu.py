@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 #############################
-##      Food Function      ##
+##      Menu Function      ##
 #############################
 
 def getMenu():
@@ -23,7 +23,7 @@ def getMenu():
                 body += "\n"
     except Exception, e:
         print str(e)
-        return "Could not find food data."
+        return "Could not find menu data."
     return body
 
 def makeSpecial():
@@ -34,15 +34,15 @@ def makeSpecial():
 ##       Top-Level        ##
 ############################
 
-## return food message
+## return menu message
 special = makeSpecial()
 
 def makeSpecial():
     s = 'To get the lunch and dinner menu.'
     return s
 
-## return proper format to use for getting food menu
+## return proper format to use for getting menu menu
 special = makeSpecial()
 
-# def eval(input):
-#     return getFood(input)
+def eval(input):
+    return getMenu()
