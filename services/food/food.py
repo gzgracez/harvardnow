@@ -13,11 +13,14 @@ def getMenu():
     soup = BeautifulSoup(website.read(), 'html.parser')
     try:
         sidebar = soup.findAll("section", { "class" : "widget widget-primary" })[0]
-        menu = sidebar.findAll("p")
+        header = soup.findAll("h2", {"style" : "margin-bottom: -0.8em"})
         body = ""
-        for i in menu:
+        for i in header:
             body += i.text.encode('unicode-escape').replace(r'\xb0','')
             body += "\n"
+            for a in i.findNextSiblings('p'):
+                body += a.text.encode('unicode-escape').replace(r'\xb0','')
+                body += "\n"
     except Exception, e:
         print str(e)
         return "Could not find food data."
