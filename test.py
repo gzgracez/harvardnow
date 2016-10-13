@@ -33,4 +33,4 @@ elif (option == 4):
 	shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId('4003894'))
 
 elif (option == 5):
-	print food.getMenu()
+	print menu.getMenu()
